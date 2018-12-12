@@ -1,0 +1,6 @@
+# all imp related files are ignored
+*.sqlite
+*.imp
+*.json
+
+__pycache__/
