@@ -22,6 +22,8 @@ class ImpParserDB:
     def __init__(self, db_config_dict):
         self.db_config_dict = db_config_dict
         self.db_helper = ImpHelper(db_config_dict)
+        # create db if not present
+        self.db_helper.create_db()
         # create session
         Session = sessionmaker()
         Session.configure(bind=self.db_helper.get_engine())

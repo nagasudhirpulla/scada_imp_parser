@@ -96,7 +96,7 @@ class ImpHelper:
         self.engine = create_engine(self.db_uri)
     
     def create_db(self):
-        # create all tables
+        # create all tables if db does not exists
         Base.metadata.create_all(self.engine)
     
     def get_engine(self):
