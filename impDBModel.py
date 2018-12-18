@@ -42,7 +42,7 @@ class Substation(Base):
     name  = Column(String, nullable=False, unique=True)
     region_id = Column(Integer, ForeignKey('regions.id'), nullable=False)
     region = relationship('Region', backref='substations')
-    alias_name  = Column(String, unique=True)
+    alias_name  = Column(String, unique=False) # kept False since we encountered error in pmu
     created_at = Column(DateTime, default = dt.datetime.now)
     updated_at = Column(DateTime, default = dt.datetime.now, onupdate = dt.datetime.now)
 

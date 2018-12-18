@@ -2,5 +2,6 @@
 *.sqlite
 *.imp
 *.json
+*.pyc
 
 __pycache__/

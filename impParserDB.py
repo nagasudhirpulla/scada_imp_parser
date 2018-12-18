@@ -166,15 +166,18 @@ class ImpParserDB:
             # if(self.currentDevice != None):
                 # self.AddDevice(self.currentDevice)
             # to derive unique device name, we append ss name if the device is not a line
-            if(self.currentDevType.name != "LINE"):
+            '''
+            if(self.currentDevType.name != "LINE" and self.currentDevType.name != "L"):
                 uniqueDeviceName = '{0}_{1}'.format(cols[1], self.currentSub.name)
             else:
                 uniqueDeviceName = cols[1]
+            '''
+            uniqueDeviceName = '{0}_{1}'.format(cols[1], self.currentSub.name)
             self.AddDevice(Device(name=cols[1], unique_name = uniqueDeviceName, alias_name=cols[2], voltage=cols[5], device_type = self.currentDevType))
             self.currentDevice = self.session.query(Device).filter(and_(Device.unique_name == uniqueDeviceName, Device.device_type_id == self.currentDevType.id)).all()[0]
             
             # if the device is a BUS, then it is node by itself
-            if(self.currentDevType.name == "BUS"):
+            if(self.currentDevType.name == "BUS" or self.currentDevType.name == "B"):
                 # hence it has only one node. The node name is device id col, i.e., column 1
                 node_el = Node(name=cols[1])
                 node_el.ssid = self.currentSub.id
@@ -185,7 +188,7 @@ class ImpParserDB:
                 return
             
             # if the device is a line, then the node pair is stored in the device definition itself
-            if(self.currentDevType.name == "LINE"):
+            if(self.currentDevType.name == "LINE" or self.currentDevType.name == "L"):
                 # the current substation node is col 7 and remote substation id is col 11, remote substation node is col 10
                 node_el = Node(name=cols[7])
                 node_el.ssid = self.currentSub.id

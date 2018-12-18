@@ -23,3 +23,7 @@ if the device is a RE, then the node is stored in the device definition itself, 
 if device is not line, bus then node pair can be found from the sttd point which will come in the coming lines
 
 if the line cols start with POINT,STTD then update the **current node**. the node pair columns are 4 and 5
+
+In scada we have device types LINE and BUS where as in PMU we have device types L and B
+
+We do not have ZBR and RE in PMU
