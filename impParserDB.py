@@ -119,7 +119,7 @@ class ImpParserDB:
         # text lines in the file
         textLines = []
         # open the file and read the text lines
-        with open('bachu.imp', 'r+') as f:
+        with open(filename, 'r+') as f:
             for line in f.readlines():
                 textLines.append(line)
         
@@ -194,7 +194,7 @@ class ImpParserDB:
                 self.currentDevice.nodes.append(node_el)
                 self.session.commit()
                 # create remote ss if not present
-                remoteSubstation = Substation(name=cols[12])
+                remoteSubstation = Substation(name=cols[11])
                 self.AddSubstation(remoteSubstation, False)
                 remoteSubstation = self.session.query(Substation).filter(Substation.name==remoteSubstation.name).all()[0]
                 node_el2 = Node(name=cols[10])
