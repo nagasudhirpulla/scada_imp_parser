@@ -173,7 +173,7 @@ class ImpParserDB:
                 uniqueDeviceName = cols[1]
             '''
             uniqueDeviceName = '{0}_{1}'.format(cols[1], self.currentSub.name)
-            self.AddDevice(Device(name=cols[1], unique_name = uniqueDeviceName, alias_name=cols[2], voltage=cols[5], device_type = self.currentDevType))
+            self.AddDevice(Device(name=cols[1], unique_name = uniqueDeviceName, alias_name=cols[2], voltage=cols[5], device_type_id = self.currentDevType.id))
             self.currentDevice = self.session.query(Device).filter(and_(Device.unique_name == uniqueDeviceName, Device.device_type_id == self.currentDevType.id)).all()[0]
             
             # if the device is a BUS, then it is node by itself

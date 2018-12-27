@@ -10,6 +10,9 @@ Created on Thu Dec  6 10:41:13 2018
 # sqlalchemy unique key multiple columns - https://stackoverflow.com/questions/10059345/sqlalchemy-unique-across-multiple-columns
 # sqlalchemy many to many relashionships - https://stackoverflow.com/questions/5756559/how-to-build-many-to-many-relations-using-sqlalchemy-a-good-example
 # overall example - https://auth0.com/blog/sqlalchemy-orm-tutorial-for-python-developers/
+
+# Python get the object status in session [persistent, pending, transcient] - https://www.pythoncentral.io/understanding-python-sqlalchemy-session/
+# Python unbind object from session - https://stackoverflow.com/questions/11213665/unbind-object-from-session
 """
 
 from sqlalchemy import create_engine, ForeignKey, Table
@@ -80,7 +83,7 @@ class Node(Base):
     __tablename__ = 'nodes'
     id   = Column(Integer, primary_key=True)
     name  = Column(String, nullable=False)
-    ssid = Column(String, ForeignKey('substations.id'), nullable=False)
+    ssid = Column(Integer, ForeignKey('substations.id'), nullable=False)
     created_at = Column(DateTime, default = dt.datetime.now)
     updated_at = Column(DateTime, default = dt.datetime.now, onupdate = dt.datetime.now)
     substation = relationship("Substation", backref='nodes')
