@@ -14,9 +14,16 @@ inputFolder = r'C:\Users\Nagasudhir\Documents\Python Projects\python_freq_analys
 
 # get the directory of the script file
 if('__file__' in globals()):
-    inputFolder = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'impFiles')
+    inputFolder = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'impFilesTest')
 
-sqlite_db_config = {'drivername': 'sqlite', 'database': 'test.sqlite'}
+# sqlite_db_config = {'drivername': 'sqlite', 'database': 'test.sqlite'}
+sqlite_db_config = {'drivername': 'postgres',
+               'username': 'postgres',
+               'password': 'postgres',
+               'host': 'localhost',
+               'database':'elements_imp_db',
+               'port': 5432}
+
 parser = ImpParserDB(sqlite_db_config)
 
 dataFilesList = glob.glob(inputFolder + '/*.imp')

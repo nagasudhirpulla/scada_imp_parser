@@ -26,6 +26,7 @@ postgres_db = {'drivername': 'postgres',
                'username': 'postgres',
                'password': 'postgres',
                'host': '192.168.99.100',
+               database='dbname',
                'port': 5432}
 '''
 Base = declarative_base()
